@@ -1,0 +1,16 @@
+number      = @{
+    ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*) ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ ("+" | "-")? ~ ASCII_DIGIT+)?
+}
+unary_minus =  { "-" }
+primary     = _{ number | "(" ~ expr ~ ")" }
+atom        = _{ unary_minus? ~ primary }
+bin_op      = _{ add | subtract | power | multiply | divide | modulo }
+add         =  { "+" }
+subtract    =  { "-" }
+multiply    =  { "*" }
+divide      =  { "/" }
+modulo      =  { "%" }
+power       =  { "**" | "^" }
+expr        =  { atom ~ (bin_op ~ atom)* }
+equation    = _{ SOI ~ expr ~ EOI }
+WHITESPACE  = _{ " " }
