@@ -11,7 +11,7 @@
 
 ## Installation
 
-- <a href="/releases/latest">Releases</a>
+- Download from releases
 - Build from source: `cargo build --release`
 
 ## Usage
